@@ -2,12 +2,12 @@ import React, { useReducer } from "react";
 import axios from "axios";
 import GithubContext from "./githubContext";
 import GithubReducer from "./githubReducer";
-import { GET_JOBS, JOBS_ERROR, SET_LOADING } from "../types";
+import { GET_JOBS, GET_JOB, JOBS_ERROR, SET_LOADING } from "../types";
 
 const GithubState = props => {
   const initialState = {
     jobs: [],
-    job: {},
+    job: null,
     loading: false,
     error: null
   };
@@ -37,6 +37,26 @@ const GithubState = props => {
     }
   };
 
+  // Search single job
+  const getJob = async id => {
+    setLoading();
+    try {
+      const res = await axios.get(
+        `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/${id}.json?markdown=true`
+      );
+
+      dispatch({
+        type: GET_JOB,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: JOBS_ERROR,
+        payload: err.message
+      });
+    }
+  };
+
   // Set Loading
   const setLoading = () => {
     dispatch({ type: SET_LOADING });
@@ -50,6 +70,7 @@ const GithubState = props => {
         loading: state.loading,
         error: state.error,
         searchJobs,
+        getJob,
         setLoading
       }}
     >

@@ -1,4 +1,4 @@
-import { GET_JOBS, JOBS_ERROR, SET_LOADING } from "../types";
+import { GET_JOBS, GET_JOB, JOBS_ERROR, SET_LOADING } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +6,12 @@ export default (state, action) => {
       return {
         ...state,
         jobs: action.payload,
+        loading: false
+      };
+    case GET_JOB:
+      return {
+        ...state,
+        job: action.payload,
         loading: false
       };
     case JOBS_ERROR:

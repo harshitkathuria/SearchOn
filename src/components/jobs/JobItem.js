@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const JobItem = ({ job }) => {
   return (
@@ -29,12 +31,19 @@ const JobItem = ({ job }) => {
             />
           </div>
         </div>
-        <button className="grey darken-3 white-text btn waves-effect">
+        <Link
+          to={`job/${job.id}`}
+          className="grey darken-3 white-text btn waves-effect"
+        >
           View Details
-        </button>
+        </Link>
       </div>
     </div>
   );
+};
+
+JobItem.propTypes = {
+  job: PropTypes.object.isRequired
 };
 
 export default JobItem;

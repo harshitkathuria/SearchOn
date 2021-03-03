@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="grey darken-3">
       <div className="nav-wrapper">
         <a href="#!" className="brand-logo center">
           SearchOn

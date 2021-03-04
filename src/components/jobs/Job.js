@@ -45,6 +45,9 @@ const Job = ({ match }) => {
                       <p>
                         {job.company}, {job.location}
                       </p>
+                      <a target="_blank" href={job.company_url}>
+                        {job.company_url}
+                      </a>
                     </div>
                     <div className="col s3 offset-s2">
                       Type: <span className="chip">{job.type}</span>

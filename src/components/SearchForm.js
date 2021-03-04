@@ -36,7 +36,7 @@ const SearchForm = () => {
               value={position || ""}
               onChange={onChange}
             />
-            <label htmlFor="position">Position</label>
+            <label htmlFor="position">Description</label>
           </div>
           <div className="input-field col s4">
             <input
@@ -45,7 +45,7 @@ const SearchForm = () => {
               value={city || ""}
               onChange={onChange}
             />
-            <label htmlFor="city">City</label>
+            <label htmlFor="city">Location</label>
           </div>
           <div className="input-field col s3">
             <p>
